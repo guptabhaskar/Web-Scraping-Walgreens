@@ -60,13 +60,13 @@ def scrape(url):
 		l.append(s)
 	return l
 
-# State Name
-state="WY"
-# City Name
-city="CASPER"
-# URL using state name and city name
-url="https://www.walgreens.com/storelocator/find.jsp?requestType=locator&state="+state+"&city="+city+"&from=localSearch"
-#Function to scrape websites of all the stores on that link
-l=scrape(url)
-#List of websites of each store in list l
-print(l)
+for j in l:
+	#create folder for that j state
+	for k in j:
+		#create folder for city k in j in j state folder
+		l1=scrape(k) # list of links of all stores in j state k city
+		#create .csv file and write
+		print(l1)
+
+
+
