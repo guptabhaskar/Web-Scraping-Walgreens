@@ -12,7 +12,8 @@ from selenium.common.exceptions import TimeoutException
 
 
 allurl=allstate.get_statelinks()
-
+all_cities_links=[]
+size=0
 for i in allurl:
 	driver=webdriver.Chrome()
 
@@ -37,16 +38,14 @@ for i in allurl:
 
 	driver.quit()
 	soup=bs(res,'html.parser')
-	all_cities_links=[]
 	box=soup.findAll(class_="row")
+	all_cities_links.append([])
 	for div in box:
 	    links = div.findAll('a')
 	    for a in links:
-	    	
 	    	if(len(a['href'])>3):
 	    		b="http:/www.walgreens.com"+a['href']
-	    		print(b)
-	    		all_cities_links.append(b)
-
+	    		all_cities_links[size].append(b)
+	size=size+1
 
 print(all_cities_links)
