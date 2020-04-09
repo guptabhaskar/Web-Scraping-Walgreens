@@ -1,6 +1,6 @@
 #Imports
 from test import cities
-l=cities[:500]
+l=cities[:82]
 from bs4 import BeautifulSoup as bs
 import requests
 from selenium import webdriver
@@ -48,6 +48,7 @@ def scrape(l1,url):
 	soup=bs(res,'html.parser')
 	c=True
 	size=0
+	count=0
 	while(c):
 		a="wag-store-locator-result-"+str(size)
 		box= soup.find(id=a)
@@ -60,14 +61,19 @@ def scrape(l1,url):
 		s=s[i:]
 		i=s.find('"')
 		s="https://www.walgreens.com"+s[:i]
-		print("\""+s+"\",",end="")
+		# print("\""+s+"\",",end="")
 		l1.append(s)
+		count+=1
+	print(count)
 	return l1
 
 l1=[]
 #create .csv file and write
 driver=webdriver.Chrome()
+count=0
 for j in l:
+	print(count,end=" ")
+	count=count+1
 	l1=scrape(l1,j) # list of links of all stores in jth link 
 driver.quit()
 print()

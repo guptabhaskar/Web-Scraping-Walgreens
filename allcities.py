@@ -46,14 +46,14 @@ driver.quit()
 print(len(all_cities_links))
 print(all_cities_links)
 # AL 82
-# AK 5
-# AZ 49
-# AR 46
-# CA 279
-# CO 57
-# CT 79
-# DE 26
-# DC 1
+# AK 5-87
+# AZ 49-136
+# AR 46-182
+# CA 279-461
+# CO 57-518
+# CT 79-597
+# DE 26-623
+# DC 1-624
 # FL 239
 # GA 146
 # HI 10
