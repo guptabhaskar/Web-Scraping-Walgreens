@@ -41,6 +41,5 @@ def get_statelinks():
 	    	all_state_links.append(b)
 
 	        # print("http:/www.walgreens.com/" + a['href'])
-
 	return all_state_links
-
+get_statelinks()
