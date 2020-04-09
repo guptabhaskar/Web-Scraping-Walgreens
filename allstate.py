@@ -20,10 +20,10 @@ def get_statelinks():
 
 	    myElem = WebDriverWait(driver, delay).until(EC.presence_of_element_located((By.ID, 'IdOfMyElement')))
 
-	    print("Page is ready!")
+	    
 	except TimeoutException:
 
-	    print ("Loading took too much time!")
+	    pass
 
 	# res=requests.get("https://www.walgreens.com/storelocator/find.jsp?requestType=locator&state=IL&city=ADDISON&from=localSearch")
 

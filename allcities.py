@@ -24,10 +24,11 @@ for i in allurl:
 
 	    myElem = WebDriverWait(driver, delay).until(EC.presence_of_element_located((By.ID, 'IdOfMyElement')))
 
-	    print("Page is ready!")
+	    
 	except TimeoutException:
+		pass
 
-	    print ("Loading took too much time!")
+	    
 
 	# res=requests.get("https://www.walgreens.com/storelocator/find.jsp?requestType=locator&state=IL&city=ADDISON&from=localSearch")
 
@@ -41,8 +42,11 @@ for i in allurl:
 	for div in box:
 	    links = div.findAll('a')
 	    for a in links:
-	    	b="http:/www.walgreens.com"+a['href']
-	    	all_cities_links.append(b)
+	    	
+	    	if(len(a['href'])>3):
+	    		b="http:/www.walgreens.com"+a['href']
+	    		print(b)
+	    		all_cities_links.append(b)
 
 
 print(all_cities_links)
