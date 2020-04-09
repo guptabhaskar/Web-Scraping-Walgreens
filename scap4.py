@@ -1,6 +1,6 @@
 #Imports
 from test import cities
-l=cities[:500]
+l=cities[2000:2500]
 from bs4 import BeautifulSoup as bs
 import requests
 from selenium import webdriver
