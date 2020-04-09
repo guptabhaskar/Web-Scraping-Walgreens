@@ -14,7 +14,7 @@ from selenium.common.exceptions import TimeoutException
 def scrape(url):
 	driver=webdriver.Chrome()
 	driver.get(url)
-	delay=8 # seconds
+	delay=5 # seconds
 	loadMoreBtn="//*[@id='loadMoreBtn']"
 	b=False
 
