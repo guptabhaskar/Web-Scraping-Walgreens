@@ -1,6 +1,6 @@
 #Imports
 from test import cities
-l=cities[:82]
+l=cities
 from bs4 import BeautifulSoup as bs
 import requests
 from selenium import webdriver
@@ -10,12 +10,11 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 from selenium.webdriver import ActionChains
 from selenium.common.exceptions import TimeoutException
-
 # Function for scraping websites of stores on a particular URL
 def scrape(l1,url):
 	count=0
 	driver.get(url)
-	delay=5 # seconds
+	delay=4 # seconds
 	loadMoreBtn="//*[@id='loadMoreBtn']"
 	b=False
 
@@ -37,7 +36,7 @@ def scrape(l1,url):
 				time.sleep(delay)# time in seconds
 				btn = driver.find_element_by_xpath(loadMoreBtn)
 				# driver.execute_script("arguments[0].click();", btn)
-				driver.execute_script("arguments[0].scrollIntoView(true);",btn)
+				# driver.execute_script("arguments[0].scrollIntoView(true);",btn)
 				# ActionChains(driver).move_to_element(driver.sl.find_element_by_xpath(loadMoreBtn)).perform()
 				ActionChains(driver).move_to_element(btn).click(btn).perform()
 				WebDriverWait(driver, delay).until(EC.element_to_be_clickable((By.XPATH,loadMoreBtn)))
@@ -64,21 +63,36 @@ def scrape(l1,url):
 		# print("\""+s+"\",",end="")
 		l1.append(s)
 		count+=1
-	print(count)
-	return l1
-
+	return (count,l1)
 l1=[]
 #create .csv file and write
 driver=webdriver.Chrome()
-count=0
+count=-1
+l2=[]
 for j in l:
-	print(count,end=" ")
-	count=count+1
-	l1=scrape(l1,j) # list of links of all stores in jth link 
+	c=0
+	while(c==0):
+		c,l1=scrape(l1,j) # list of links of all stores in jth link 
+	if(c==10):
+		l2.append(count)
+	print()
+	print()
+	print(l2)
+	print()
+	print(count)
+	print()
+	if(count%50==0):
+		print(l1)
+	print()
+	print()
+	count+=1
 driver.quit()
 print()
 print()
 print(l1)
+print()
+print()
+print(l2)
 
 
 
